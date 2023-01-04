@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Tela-login-com-mascaras",
+    "slug": "Tela-login-com-mascaras",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
