@@ -2,17 +2,17 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useRef, useState } from 'react';
 import { TextInputMask } from 'react-native-masked-text'
 import {
-  Linking,
   StyleSheet,
   Text,
   View,
-  TextInput,
   Keyboard,
   TouchableOpacity,
   Alert,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  SafeAreaView,
+  ScrollView
 } from 'react-native';
-
+import Logo from './src/Images/Logo';
 
 
 
@@ -28,62 +28,81 @@ export default function App() {
 
 
   function cadastrado() {
-    Alert("cadastro concluído com sucesso!r")
+    Alert("cadastro concluído com sucesso!");
   }
+
+
 
   return (
 
 
 
-    <TouchableWithoutFeedback onPress={() => {
-      Keyboard.dismiss()
-    }}>
-    <View style={styles.container}>
-      <View>
-      
-      </View>
+    <TouchableWithoutFeedback
 
-      <Text> Digite seu celular </Text>
-      
-        <TextInputMask
-          style={styles.input}
-          type={"cel-phone"}
-          options={{
-            maskType: 'BRL',
-            withDDD: true,
-            dddMask: '(99) '
-          }}
-          value={cell}
-          onChangeText={text => setCell(text)}
+      onPress={() => {
+        Keyboard.dismiss()
+      }}>
 
-        />
-     
-      <Text> Digite o seu CPF </Text>
+      <View
+        style={styles.container}
+      >
 
-        <TextInputMask
-          style={styles.input}
-          type={"cpf"}
-          value={cpf}
-          onChangeText={text => setCpf(text)}
-        />
 
-    
-      <View style={styles.buttonView}>
+        <ScrollView
 
-        <TouchableOpacity
-          style={styles.cadastradoBtn}
-
+          style={styles.scrollView}
         >
-          <Text style={styles.title}
-            onPress={cadastrado}
+          <View
+            style={styles.box}
           >
-            Cadastrar
-          </Text>
-        </TouchableOpacity>
+            <View>
+              <Logo />
+
+            </View>
+            <Text> Digite seu celular </Text>
+
+            <TextInputMask
+              style={styles.input}
+              type={"cel-phone"}
+              options={{
+                maskType: 'BRL',
+                withDDD: true,
+                dddMask: '(99) '
+
+              }}
+              value={cell}
+              onChangeText={text => setCell(text)}
+
+            />
+
+            <Text> Digite o seu CPF </Text>
+
+            <TextInputMask
+              style={styles.input}
+              type={"cpf"}
+              value={cpf}
+              onChangeText={text => setCpf(text)}
+            />
+
+
+            <View style={styles.buttonView}>
+
+              <TouchableOpacity
+                style={styles.cadastradoBtn}
+                onPress={cadastrado}
+              >
+                <Text style={styles.title}
+                  
+                >
+                  Cadastrar
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
       </View>
 
 
-    </View>
     </TouchableWithoutFeedback>
 
   );
@@ -93,10 +112,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+
+  box: {
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop:120,
+    height:780
   },
   input: {
+
     width: '90%',
     height: 40,
     backgroundColor: '#ddd',
@@ -105,7 +129,7 @@ const styles = StyleSheet.create({
     padding: 5,
     marginTop: 6,
     marginBottom: 20,
-    position:'relative'
+    position: 'relative'
   },
   buttonView: {
     width: "90%",
@@ -124,5 +148,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  logo: {
+    height: 50,
+    width: 50
   }
 });
