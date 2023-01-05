@@ -1,20 +1,67 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { TextInputMask } from 'react-native-masked-text'
 import {
   StyleSheet,
   Text,
   View,
-  TextInput
+  TextInput,
+  Keyboard,
+  TouchableOpacity,
+  Alert,
+
 } from 'react-native';
 
 export default function App() {
+
+  const [cell, setCell] = useState("");
+  const [cpf, setCpf] = useState("");
+
+
+  function cadastrado() {
+    Alert("cadastro concluído com sucesso!r")
+  }
+
   return (
     <View style={styles.container}>
-      <TextInput
-      placeholder='(99) 99999-9999'
-      style={styles.input}
-      keyboardType='numeric'
+      <Text> Digite seu celular </Text>
+      <TextInputMask
+        style={styles.input}
+        type={"cel-phone"}
+        options={{
+          maskType: 'BRL',
+          withDDD: true,
+          dddMask: '(99) '
+        }}
+        value={cell}
+        onChangeText={text => setCell(text)}
+
       />
+      <Text> Digite o seu CPF </Text>
+
+      <TextInputMask
+        style={styles.input}
+        type={"cpf"}
+        value={cpf}
+        onChangeText={text => setCpf(text)}
+      />
+     
+
+      <View style={styles.buttonView}>
+        
+        <TouchableOpacity
+          style={styles.cadastradoBtn}
+          
+          >
+          <Text style={styles.title}
+          onPress={cadastrado}
+          >
+            Cadastrar
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+    
     </View>
   );
 }
@@ -26,12 +73,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  input:{
-    width:'90%',
-    height:40,
-    backgroundColor:'#ddd',
-    borderRadius:5,
-    fontSize:20,
-    padding:5,
+  input: {
+    width: '90%',
+    height: 40,
+    backgroundColor: '#ddd',
+    borderRadius: 5,
+    fontSize: 20,
+    padding: 5,
+    marginTop: 6,
+    marginBottom: 20,
+  },
+  buttonView:{
+    width: "90%",
+    marginTop:20
+    
+  },
+  title: {
+    color: '#000',
+    fontSize: 18,
+    fontWeight:'bold'
+  },
+  cadastradoBtn: {
+    height: 40,
+    width:'100%',
+    backgroundColor:'#1E90FF',
+    borderRadius: 8,
+    alignItems:'center',
+    justifyContent:'center'
   }
 });
