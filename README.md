@@ -10,7 +10,7 @@ Front-End de uma Tela de login com mascaramento de caracteres ao digitar, desenv
 
 ## Prévia da aplicação
 
-![image](https://user-images.githubusercontent.com/101438815/210866229-54fef121-30c9-4f47-be7b-d4b26938e6c6.png)
 
 
 
+![IMG_6EB86B292409-1_resized](https://user-images.githubusercontent.com/101438815/210866509-12e26127-fad0-4232-9bd2-db83373520b4.jpeg)
