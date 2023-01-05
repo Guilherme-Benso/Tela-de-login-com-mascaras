@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useRef, useState } from 'react';
 import { TextInputMask } from 'react-native-masked-text'
 import {
+  Linking,
   StyleSheet,
   Text,
   View,
@@ -20,7 +21,7 @@ export default function App() {
 
   //escondendo o teclado
 
-
+  const logo = URL
 
   const [cell, setCell] = useState("");
   const [cpf, setCpf] = useState("");
@@ -38,6 +39,10 @@ export default function App() {
       Keyboard.dismiss()
     }}>
     <View style={styles.container}>
+      <View>
+      
+      </View>
+
       <Text> Digite seu celular </Text>
       
         <TextInputMask
