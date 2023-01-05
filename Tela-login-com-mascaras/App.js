@@ -9,10 +9,18 @@ import {
   Keyboard,
   TouchableOpacity,
   Alert,
-
+  TouchableWithoutFeedback
 } from 'react-native';
 
+
+
+
+
 export default function App() {
+
+  //escondendo o teclado
+
+
 
   const [cell, setCell] = useState("");
   const [cpf, setCpf] = useState("");
@@ -23,46 +31,56 @@ export default function App() {
   }
 
   return (
+
+
+
+    <TouchableWithoutFeedback onPress={() => {
+      Keyboard.dismiss()
+    }}>
     <View style={styles.container}>
       <Text> Digite seu celular </Text>
-      <TextInputMask
-        style={styles.input}
-        type={"cel-phone"}
-        options={{
-          maskType: 'BRL',
-          withDDD: true,
-          dddMask: '(99) '
-        }}
-        value={cell}
-        onChangeText={text => setCell(text)}
+      
+        <TextInputMask
+          style={styles.input}
+          type={"cel-phone"}
+          options={{
+            maskType: 'BRL',
+            withDDD: true,
+            dddMask: '(99) '
+          }}
+          value={cell}
+          onChangeText={text => setCell(text)}
 
-      />
+        />
+     
       <Text> Digite o seu CPF </Text>
 
-      <TextInputMask
-        style={styles.input}
-        type={"cpf"}
-        value={cpf}
-        onChangeText={text => setCpf(text)}
-      />
-     
+        <TextInputMask
+          style={styles.input}
+          type={"cpf"}
+          value={cpf}
+          onChangeText={text => setCpf(text)}
+        />
 
+    
       <View style={styles.buttonView}>
-        
+
         <TouchableOpacity
           style={styles.cadastradoBtn}
-          
-          >
+
+        >
           <Text style={styles.title}
-          onPress={cadastrado}
+            onPress={cadastrado}
           >
             Cadastrar
           </Text>
         </TouchableOpacity>
       </View>
 
-    
+
     </View>
+    </TouchableWithoutFeedback>
+
   );
 }
 
@@ -82,23 +100,24 @@ const styles = StyleSheet.create({
     padding: 5,
     marginTop: 6,
     marginBottom: 20,
+    position:'relative'
   },
-  buttonView:{
+  buttonView: {
     width: "90%",
-    marginTop:20
-    
+    marginTop: 20
+
   },
   title: {
     color: '#000',
     fontSize: 18,
-    fontWeight:'bold'
+    fontWeight: 'bold'
   },
   cadastradoBtn: {
     height: 40,
-    width:'100%',
-    backgroundColor:'#1E90FF',
+    width: '100%',
+    backgroundColor: '#1E90FF',
     borderRadius: 8,
-    alignItems:'center',
-    justifyContent:'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
