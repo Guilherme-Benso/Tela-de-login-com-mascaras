@@ -1,4 +1,5 @@
 # App Tela-de-login-com-mascaras
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=CONCLUÍDO&color=GREEN&style=for-the-badge)
 
 ## 📝 Resumo do projeto
 Front-End de uma Tela de login com mascaramento de caracteres ao digitar, desenvolvida com react-native
